@@ -36,7 +36,10 @@ this returns the description
 app.use('/graphql',graphqlHTTP({
     schema: schema,
     // determines the values that will be used in the response to the query 
-    rootValue: root
+    rootValue: root,
+    // graphiql = true, displays teh frontend application so developers won't have to use postman to test 
+    // http://localhost:3000/graphql
+    graphiql: true
 }))
 
 // this app is listening for requests on port 3000
