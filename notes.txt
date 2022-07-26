@@ -1,0 +1,52 @@
+Official GraphQL website: https://graphql.org/
+What is GraphQL?
+- provides another way of querying servers for data
+- specifies how the front end should talk to backend APIs
+- specifies how bakcend APIs should be built in order to 
+respond to GraphQl messages
+- GraphQL is a language used for querying (hence QL = query language)
+- Simpler than restful APIs because only one endpoint is needed 
+- The one endpoint (/graphql) is a post request where teh body contains the query
+- queries: asks the server for data
+- mutations: modify data 
+- the structure of the response is flexible, the query defines exactly which data is returned in the response 
+
+
+Practice queries here: https://graphql.org/swapi-graphql
+
+sample query that retrieves the title and release date of the film where the filmId = 1:
+query {
+  film(filmID: 1){
+    title
+    releaseDate
+  }
+}
+
+GraphQL vs REST:
+
+- these two can work alongside eachother 
+
+GraphQL:
+- perfect for ecommerce applications 
+- solves the issues of underfetching (not getting enough data in the response) 
+& overfetching (getting more data than necessary in the response)
+- saves bandwidth
+- saves develoeprs from doing extra processing work
+- more efficient  
+- gives the devloper schemas and types 
+- speeds up development, great for large scale projects 
+- only has one endpoint to access the entire backend 
+
+REST:
+- stateless, allows developers to create clusters and scale servers easily
+- has named endpoints that are easy to navigate 
+- follows HTTP protocol very closely 
+- easier to cache frequently requested data
+- more common 
+
+What is a RESTful API?
+- A REST API (also known as RESTful API) is an application programming interface 
+(API or web API) that conforms to the constraints of REST architectural style and 
+allows for interaction with RESTful web services. REST stands for representational 
+state transfer and was created by computer scientist Roy Fielding
+
