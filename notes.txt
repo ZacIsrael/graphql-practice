@@ -50,3 +50,9 @@ What is a RESTful API?
 allows for interaction with RESTful web services. REST stands for representational 
 state transfer and was created by computer scientist Roy Fielding
 
+What is GraphQL Tools?
+- https://www.graphql-tools.com/
+- GraphQL Tools is a set of NPM packages and an opinionated structure for how 
+to build a GraphQL schema and resolvers in JavaScript, following the GraphQL-first 
+development workflow
+- has been proven to work in many production applications 
