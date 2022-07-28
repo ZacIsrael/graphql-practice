@@ -73,3 +73,7 @@ Wha are the two large components that every GraphQL server has?
     - context: useful for data that is shared across all the resolvers (authentication data, etc)
     - info: contains information about the current state of the operation  
   - can make API calls, asynchronous database operations, and comnine differnet data or filter it 
+
+What are the two main operations that GraphQL servers support?
+- queries: used to fetch server-side data 
+- mutations: used to modify server-side data

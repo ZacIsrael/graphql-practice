@@ -1,4 +1,4 @@
-const { getAllProducts, getProductsByPrice, getProductByID } = require('./products.model')
+const { getAllProducts, getProductsByPrice, getProductByID, addNewProduct } = require('./products.model')
 
 module.exports = {
     Query: {
@@ -21,6 +21,13 @@ module.exports = {
         productByID: async (parent, args, context, info) => {
             console.log('args= ', args, 'args.id= ', args.id)
             return await getProductByID(args.id);
+        }
+    },
+
+    Mutation: {
+        addNewProduct: async (parent, args, context, info) => {
+            console.log(`addNewProduct(): args=${args}`);
+            return await addNewProduct(args.id, args.description, args.price);
         }
     }
 };

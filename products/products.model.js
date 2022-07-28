@@ -2,27 +2,32 @@ const products = [
     {
         id: 'redshoe',
         description: 'Red Shoe',
-        price: 42.12
+        price: 42.12,
+        reviews: []
     },
     {
         id: 'blueshoe',
         description: 'Blue Shoe',
-        price: 102.35
+        price: 102.35,
+        reviews: []
     },
     {
         id: 'greensirt',
         description: 'Green Polo Shirt',
-        price: 50.00
+        price: 50.00,
+        reviews: []
     },
     {
         id: 'blackpants',
         description: 'Black Cargo Pants',
-        price: 60.00
+        price: 60.00,
+        reviews: []
     },
     {
         id: 'whiteshirt',
         description: 'White T-shirt',
-        price: 10.00
+        price: 10.00,
+        reviews: []
     },
 ]
 
@@ -43,8 +48,21 @@ async function getProductByID(id){
     })
 }
 
+async function addNewProduct(id, description, price){
+
+    const newProduct = {
+        id, 
+        price,
+        description,
+        reviews: []
+    }
+    products.push(newProduct);
+    return newProduct;
+}
+
 module.exports = {
     getAllProducts,
     getProductsByPrice,
-    getProductByID
+    getProductByID,
+    addNewProduct
 }
