@@ -30,6 +30,21 @@ async function getAllProducts(){
     return products;
 }
 
+async function getProductsByPrice(min, max){
+    return products.filter((product) => {
+        const price = product.price
+        return price >= min && price <= max
+    })
+}
+
+async function getProductByID(id){
+    return products.filter((product) => {
+        return product.id == id;
+    })
+}
+
 module.exports = {
-    getAllProducts
+    getAllProducts,
+    getProductsByPrice,
+    getProductByID
 }

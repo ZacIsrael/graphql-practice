@@ -1,4 +1,4 @@
-const { getAllProducts } = require('./products.model')
+const { getAllProducts, getProductsByPrice, getProductByID } = require('./products.model')
 
 module.exports = {
     Query: {
@@ -12,6 +12,14 @@ module.exports = {
         products: async (parent, args, context, info) => {
             console.log(`Resolver called. Getting products....`)
             return await getAllProducts();
+        },
+        // filters the product by price 
+        productsByPrice: async (parent, args, context, info) => {
+            // must look at the args parameter to figure out the min & max price passed 
+            return await getProductsByPrice(args.min, args.max)
+        }, 
+        productByID: async (parent, args, context, info) => {
+            return await getProductByID(args.id);
         }
     }
-}
+};
