@@ -56,3 +56,20 @@ What is GraphQL Tools?
 to build a GraphQL schema and resolvers in JavaScript, following the GraphQL-first 
 development workflow
 - has been proven to work in many production applications 
+
+Wha are the two large components that every GraphQL server has?
+- schemas:
+  - describes the shape of the available data 
+  - defines a hierarchy of types with fields that are populated from back-end data stores
+  - specifies exactly which queries and mutations are available for clients to execute
+- resolvers:
+  - a collection of functions that generate response for a GraphQL query
+  - acts as a GraphQL query handler
+  - Every resolver function in a GraphQL schema accepts four positional arguments as given below:
+    - fieldName:(root, args, context, info) => { result }
+  - resolver parameters:
+    - parent: the root object (when just starting out)
+    - args: used when there is a parameterized query (filtering products based on a condition)
+    - context: useful for data that is shared across all the resolvers (authentication data, etc)
+    - info: contains information about the current state of the operation  
+  - can make API calls, asynchronous database operations, and comnine differnet data or filter it 
