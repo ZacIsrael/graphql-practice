@@ -9,7 +9,11 @@ const path = require('path');
 const { buildSchema } = require('graphql');
 
 // express middleware function that respons to graphql queries 
-const { graphqlHTTP } = require('express-graphql');
+// const { graphqlHTTP } = require('express-graphql');
+
+/* ApolloServers handles all of the incoming requests regardless if 
+ they are coming from GraphQL or another express middleware in the server*/
+const { ApolloServer } = require('apollo-server-express');
 
 // the products and orders arrays 
 const { getAllProducts } = require('./products/products.model');
@@ -36,11 +40,41 @@ const typesArray = loadFilesSync(path.join(__dirname,'**/*.graphql'));
 
 // retrieves all of the resolver functions
 const resolversArray = loadFilesSync(path.join(__dirname, '**/*.resolvers.js'));
-// makeExecutableSchema allows us to split up the schemas instead of them being in one long string
-const schema = makeExecutableSchema({
-    typeDefs: typesArray,
-    resolvers: resolversArray
-});
+
+
+async function startApolloServer(){
+    // application object
+    const app = express();
+
+    // makeExecutableSchema allows us to split up the schemas instead of them being in one long string
+    const schema = makeExecutableSchema({
+        typeDefs: typesArray,
+        resolvers: resolversArray
+    });
+
+    // this server contains all the middleware and logic to handle incoming GraphQL requests 
+    const server = new ApolloServer({
+        schema
+    });
+
+    // tells Apollo to prepare to handle incoming GraphQL operations 
+    await server.start();
+
+    // connects Apolllo's GraphQl middleware with the express server (app)
+    server.applyMiddleware({ app, path: '/graphql'})
+
+    // this app is listening for requests on port 3000
+    app.listen(3000, () => {
+        console.log('Running GraphQL server...');
+    })
+};
+
+startApolloServer();
+
+
+
+
+
 
 // buildig schema for an ecommerce API
 // the type Query lists all of the different pieces of data that can be queried for in the API
@@ -76,12 +110,12 @@ const schema = buildSchema(`
     }
 `); */
 
-const root = {
-    products: products,
-    orders: orders
-}
+// const root = {
+//     products: products,
+//     orders: orders
+// }
 // application object
-const app = express();
+// const app = express();
 
 /* 
 functional graphql server
@@ -92,6 +126,8 @@ body:
 }
 this returns the description
 */
+
+/*
 app.use('/graphql',graphqlHTTP({
     schema: schema,
     // determines the values that will be used in the response to the query 
@@ -99,9 +135,9 @@ app.use('/graphql',graphqlHTTP({
     // graphiql = true, displays teh frontend application so developers won't have to use postman to test 
     // http://localhost:3000/graphql
     graphiql: true
-}))
+})) */
 
 // this app is listening for requests on port 3000
-app.listen(3000, () => {
-    console.log('Running GraphQL server...');
-})
+// app.listen(3000, () => {
+//     console.log('Running GraphQL server...');
+// })

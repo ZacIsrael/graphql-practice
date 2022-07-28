@@ -77,3 +77,14 @@ Wha are the two large components that every GraphQL server has?
 What are the two main operations that GraphQL servers support?
 - queries: used to fetch server-side data 
 - mutations: used to modify server-side data
+
+What is Apollo? https://www.apollographql.com/docs/
+- a GraphQL implementation
+- contains many libraries that help save graphql queries on React, iOS, and Android 
+- Apollo Client:
+  - a set of frontend libraries that help make GraphQL queries and save GraphQL data in the frontend of an application 
+  - more convenient than maing post requets on the server directly 
+- Apollo Server: https://github.com/apollographql/apollo-server
+  - github package that allows developers to create a GraphQL server on Node 
+  - can work with Express, Koa, Hapi, Lambda, or any other Node framework 
+  - 
