@@ -60,9 +60,27 @@ async function addNewProduct(id, description, price){
     return newProduct;
 }
 
+async function addNewProductReview(productID, rating, comment){
+    
+    // find the correct product
+    const product = await getProductByID(productID);
+    if(product){
+        const newReview = {
+            rating,
+            comment
+        };
+        // add the review
+        product.reviews.push(newReview);
+        // return the new Review 
+        return newReview; 
+    }
+    
+}
+
 module.exports = {
     getAllProducts,
     getProductsByPrice,
     getProductByID,
-    addNewProduct
+    addNewProduct,
+    addNewProductReview
 }

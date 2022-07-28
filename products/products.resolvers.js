@@ -1,4 +1,4 @@
-const { getAllProducts, getProductsByPrice, getProductByID, addNewProduct } = require('./products.model')
+const { getAllProducts, getProductsByPrice, getProductByID, addNewProduct, addNewProductReview } = require('./products.model')
 
 module.exports = {
     Query: {
@@ -28,6 +28,14 @@ module.exports = {
         addNewProduct: async (parent, args, context, info) => {
             console.log(`addNewProduct(): args=${args}`);
             return await addNewProduct(args.id, args.description, args.price);
+        },
+        addNewProductReview: async (parent, args, context, info) => {
+            console.log('addNewProductReview()');
+            const comment = args.comment
+            if(!args.comment){
+                comment = '';
+            }
+            return await addNewProductReview(args.productID, args.rating, comment);
         }
     }
 };
