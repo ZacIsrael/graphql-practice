@@ -38,8 +38,8 @@ async function getProductsByPrice(min, max){
 }
 
 async function getProductByID(id){
-    return products.filter((product) => {
-        return product.id == id;
+    return products.find((product) => {
+        return product.id === id;
     })
 }
 

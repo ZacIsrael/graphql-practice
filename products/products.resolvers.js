@@ -19,6 +19,7 @@ module.exports = {
             return await getProductsByPrice(args.min, args.max)
         }, 
         productByID: async (parent, args, context, info) => {
+            console.log('args= ', args, 'args.id= ', args.id)
             return await getProductByID(args.id);
         }
     }
